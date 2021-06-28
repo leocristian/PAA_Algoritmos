@@ -5,7 +5,7 @@ void troca(int *n1, int *n2){
     *n2 = aux;
 }
 
-void insercao(int *v, int n){
+void insertion(int *v, int n){
     int i, j;
     int aux;
     for(i=1;i<n;i++){
