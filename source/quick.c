@@ -1,15 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define swap(t, x, y) { t z = x; x = y; y = z; }
-typedef int TYPE;
-int partition(TYPE [], int, int);
-void quick_sort(TYPE [], int, int);
-void print_array(TYPE [], int);
 
 int main(){
 	puts("-----Quick Sort-----");
-	TYPE A[] = {2, 3, 4, 156, 12, 44, 55, 68, 11, 32, 54, 6, 7, 8, 34, 56, 76, 78, 98, 2673, 666};
-	int n = sizeof(A) / sizeof(TYPE);
+	int A[] = {2, 3, 4, 156, 12, 44, 55, 68, 11, 32, 54, 6, 7, 8, 34, 56, 76, 78, 98, 2673, 666};
+	int n = sizeof(A) / sizeof(int);
 	
 	printf("Unsorted: ");
 	print_array(A, n);
@@ -20,23 +16,23 @@ int main(){
 	
 	return EXIT_SUCCESS;
 }
-int partition(TYPE A[], int p, int r) {
-	TYPE x = A[r]; //pivot
+int partition(int A[], int p, int r) {
+	int x = A[r]; //pivot
 	int i = p - 1, j;
 	for(j = p; j < r ; j++) {
 		if(A[j] <= x) {
 			i = i + 1;
-			swap(TYPE, A[i], A[j]); 
+			swap(int, A[i], A[j]); 
 		}
 	}
 	i = i + 1;
-	swap(TYPE, A[i], A[r]);
+	swap(int, A[i], A[r]);
 	return i;
 }
-void quick_sort(TYPE A[], int p, int r) {
+void quick_sort(int A[], int p, int r) {
 	if(p < r) {
 		int t = (rand() % ( r - p + 1) + p);
-		swap(TYPE, A[t], A[r]); 
+		swap(int, A[t], A[r]); 
 		//Used to avoid O(n^2) worst case
 		
 		int q = partition(A, p, r);
@@ -44,7 +40,7 @@ void quick_sort(TYPE A[], int p, int r) {
 		quick_sort(A, q + 1, r);
 	}
 }
-void print_array(TYPE A[], int n) {
+void print_array(int A[], int n) {
 	int i = 0;
 	putchar('[');
 	while(i < n) {
